@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { type ComponentType, useState } from 'react';
+import gsap from 'gsap';
 import './App.css';
 import IntroSection from './sections/IntroSection';
 import CompanySection from './sections/CompanySection';
@@ -13,25 +14,32 @@ import SkillsSection from './sections/SkillsSection';
 import DifficultiesSection from './sections/DifficultiesSection';
 import ConclusionSection from './sections/ConclusionSection';
 
-// Array of all slide components in order
-const SLIDES = [
-  IntroSection,
-  CompanySection,
-  ContextSection,
-  NetworkSection,
-  DhcpVlanSection,
-  ServiceSection,
-  SupportSection,
-  WorkstationsSection,
-  BackupPeripheralSection,
-  SkillsSection,
-  DifficultiesSection,
-  ConclusionSection,
+type SlideProps = {
+  isActive: boolean;
+  slideIndex: number;
+};
+
+gsap.defaults({ duration: 0.6, ease: 'power2.out' });
+
+// Array of all slide components with their indices
+const SLIDE_COMPONENTS: Array<{ Component: ComponentType<SlideProps>; index: number }> = [
+  { Component: IntroSection, index: 0 },
+  { Component: CompanySection, index: 1 },
+  { Component: ContextSection, index: 2 },
+  { Component: NetworkSection, index: 3 },
+  { Component: DhcpVlanSection, index: 4 },
+  { Component: ServiceSection, index: 5 },
+  { Component: SupportSection, index: 6 },
+  { Component: WorkstationsSection, index: 7 },
+  { Component: BackupPeripheralSection, index: 8 },
+  { Component: SkillsSection, index: 9 },
+  { Component: DifficultiesSection, index: 10 },
+  { Component: ConclusionSection, index: 11 },
 ];
 
 function App() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const totalSlides = SLIDES.length;
+  const totalSlides = SLIDE_COMPONENTS.length;
 
   // Navigate to next slide
   const goToNextSlide = () => {
@@ -60,12 +68,15 @@ function App() {
           transform: slideTransform
         }}
       >
-        {SLIDES.map((SlideComponent, index) => (
+        {SLIDE_COMPONENTS.map(({ Component, index }) => (
           <div 
             key={index}
-            className="w-screen h-screen flex-shrink-0 overflow-y-auto"
+            className="w-screen h-screen shrink-0 overflow-y-auto"
           >
-            <SlideComponent />
+            <Component 
+              isActive={currentSlideIndex === index}
+              slideIndex={index}
+            />
           </div>
         ))}
       </div>
@@ -86,7 +97,7 @@ function App() {
         </button>
 
         {/* Slide counter */}
-        <div className="text-sm font-medium text-gray-700 min-w-[60px] text-center">
+        <div className="text-sm font-medium text-gray-700 min-w-15 text-center">
           {currentSlideIndex + 1} / {totalSlides}
         </div>
 

@@ -1,14 +1,54 @@
-export default function SupportSection() {
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
+type SlideProps = {
+  isActive: boolean;
+  slideIndex: number;
+};
+
+export default function SupportSection({ isActive, slideIndex }: SlideProps) {
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const targets = gsap.utils.toArray<HTMLElement>(
+        contentRef.current?.querySelectorAll('[data-animate]') ?? []
+      );
+
+      if (!targets.length) return;
+
+      if (!isActive) {
+        gsap.set(targets, { opacity: 0, y: 30 });
+        return;
+      }
+
+      gsap.set(targets, { opacity: 0, y: 30 });
+      gsap.to(targets, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+    }, contentRef);
+
+    return () => ctx.revert();
+  }, [isActive]);
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-50 py-24">
-      <div className="max-w-5xl mx-auto px-8">
-        <h2 className="text-5xl font-bold text-gray-900 mb-12">
+    <section
+      data-active={isActive}
+      data-slide={slideIndex}
+      className="min-h-screen flex items-center justify-center bg-gray-50 py-24"
+    >
+      <div ref={contentRef} className="max-w-5xl mx-auto px-8">
+        <h2 data-animate className="text-5xl font-bold text-gray-900 mb-12">
           Support technique
         </h2>
         
         <div className="space-y-8">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
               <div className="text-4xl mb-4">🎫</div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
                 Microsoft HelpDesk
@@ -18,7 +58,7 @@ export default function SupportSection() {
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
               <div className="text-4xl mb-4">📋</div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
                 Tickets
@@ -28,7 +68,7 @@ export default function SupportSection() {
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
               <div className="text-4xl mb-4">📈</div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
                 Niveaux de support
