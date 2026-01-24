@@ -11,10 +11,10 @@ export default function ContextSection() {
             <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
               <div className="text-4xl mb-4">🎓</div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
-                Étudiant DSI – 2ᵉ année
+                Étudiant – 1ère année TI
               </h3>
               <p className="text-gray-600 text-lg">
-                Formation en développement des systèmes d'information
+                Formation en techniques de l'informatique
               </p>
             </div>
             
