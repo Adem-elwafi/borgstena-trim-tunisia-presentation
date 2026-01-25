@@ -59,7 +59,7 @@ export default function IntroSection({ isActive, slideIndex }: SlideProps) {
           
           <div data-animate className="mt-12 pt-8 border-t border-gray-700">
             <p className="text-2xl">
-              Adem Elwafi – DSI – ISET Bizerte
+              Adem Elwafi – TI – ISET Bizerte
             </p>
           </div>
         </div>
