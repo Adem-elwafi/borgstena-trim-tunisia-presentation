@@ -39,15 +39,15 @@ export default function ConclusionSection({ isActive, slideIndex }: SlideProps) 
     <section
       data-active={isActive}
       data-slide={slideIndex}
-      className="min-h-screen flex items-center justify-center bg-gray-50 py-24"
+      className="min-h-screen flex items-center justify-center bg-slate-950 py-24"
     >
       <div ref={contentRef} className="max-w-5xl mx-auto px-8 text-center">
-        <h2 data-animate className="text-5xl font-bold text-gray-900 mb-12">
+        <h2 data-animate className="text-5xl font-bold text-sky-300 mb-12">
           Conclusion
         </h2>
         
         <div className="space-y-8 max-w-3xl mx-auto">
-          <div className="space-y-6 text-2xl text-gray-700">
+          <div className="space-y-6 text-2xl text-slate-300">
             <p data-animate className="flex items-center justify-center gap-3">
               <span className="text-4xl">✨</span>
               <span>Stage enrichissant</span>
@@ -62,8 +62,8 @@ export default function ConclusionSection({ isActive, slideIndex }: SlideProps) 
             </p>
           </div>
           
-          <div data-animate className="mt-16 pt-16 border-t border-gray-300">
-            <p className="text-xl text-gray-600">
+          <div data-animate className="mt-16 pt-16 border-t border-slate-700">
+            <p className="text-xl text-slate-300">
               Merci pour votre attention
             </p>
           </div>

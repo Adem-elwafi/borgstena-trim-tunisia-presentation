@@ -2,6 +2,25 @@
 
 :root {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Dark Tech Theme Colors */
+  --bg-primary: #0f172a; /* Deep dark charcoal/slate */
+  --bg-secondary: #1e293b; /* Slightly lighter dark slate */
+  --text-primary: #f1f5f9; /* Soft white */
+  --text-secondary: #cbd5e1; /* Light gray */
+  --accent-color: #0ea5e9; /* Muted cyan blue */
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* Remove default scrollbar for cleaner look */
@@ -9,7 +28,16 @@
   display: none;
 }
 
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* Ensure good contrast and readability */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p, span, li {
+  color: var(--text-secondary);
+}
+
+/* Image filter for darkening */
+img {
+  filter: contrast(1.05) brightness(0.95) saturate(0.85);
 }

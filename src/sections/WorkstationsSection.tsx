@@ -39,38 +39,38 @@ export default function WorkstationsSection({ isActive, slideIndex }: SlideProps
     <section
       data-active={isActive}
       data-slide={slideIndex}
-      className="min-h-screen flex items-center justify-center bg-gray-50 py-24"
+      className="min-h-screen flex items-center justify-center bg-slate-950 py-24"
     >
       <div ref={contentRef} className="max-w-5xl mx-auto px-8">
-        <h2 data-animate className="text-5xl font-bold text-gray-900 mb-12">
+        <h2 data-animate className="text-5xl font-bold text-sky-300 mb-12">
           Intégration des postes
         </h2>
         
         <div className="space-y-8">
           <div className="grid md:grid-cols-3 gap-8">
-            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
+            <div data-animate className="p-8 border border-slate-700 text-center">
               <div className="text-5xl mb-4">🪟</div>
-              <h3 className="text-2xl font-semibold text-gray-900">
+              <h3 className="text-2xl font-semibold text-slate-200">
                 Windows
               </h3>
             </div>
             
-            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
+            <div data-animate className="p-8 border border-slate-700 text-center">
               <div className="text-5xl mb-4">📂</div>
-              <h3 className="text-2xl font-semibold text-gray-900">
+              <h3 className="text-2xl font-semibold text-slate-200">
                 Active Directory
               </h3>
             </div>
             
-            <div data-animate className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
+            <div data-animate className="p-8 border border-slate-700 text-center">
               <div className="text-5xl mb-4">🌐</div>
-              <h3 className="text-2xl font-semibold text-gray-900">
+              <h3 className="text-2xl font-semibold text-slate-200">
                 Domaine
               </h3>
             </div>
           </div>
           
-          <div data-animate className="bg-gray-100 rounded-lg h-64 flex items-center justify-center mt-12">
+          <div data-animate className="h-64 flex items-center justify-center mt-12">
             <img 
               src="https://images.unsplash.com/photo-1593642532400-2682810df593?w=800&q=80" 
               alt="Workstation setup"

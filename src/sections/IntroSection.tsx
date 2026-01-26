@@ -41,15 +41,15 @@ export default function IntroSection({ isActive, slideIndex }: SlideProps) {
     <section
       data-active={isActive}
       data-slide={slideIndex}
-      className="min-h-screen flex items-center justify-center bg-gray-900 text-white py-24"
+      className="min-h-screen flex items-center justify-center bg-slate-950 py-24"
     >
       <div ref={contentRef} className="max-w-5xl mx-auto px-8 text-center">
-        <h1 data-animate className="text-7xl font-bold mb-8">
+        <h1 data-animate className="text-7xl font-bold mb-8 text-sky-300">
           Stage d'initiation
         </h1>
         
-        <div className="space-y-6 text-2xl text-gray-300">
-          <p data-animate className="text-4xl font-semibold text-white">
+        <div className="space-y-6 text-2xl text-slate-300">
+          <p data-animate className="text-4xl font-semibold text-slate-200">
             Dual Borgstena Trim Tunisia
           </p>
           
@@ -57,8 +57,8 @@ export default function IntroSection({ isActive, slideIndex }: SlideProps) {
             Département informatique
           </p>
           
-          <div data-animate className="mt-12 pt-8 border-t border-gray-700">
-            <p className="text-2xl">
+          <div data-animate className="mt-12 pt-8 border-t border-slate-700">
+            <p className="text-2xl text-slate-200">
               Adem Elwafi – TI – ISET Bizerte
             </p>
           </div>
