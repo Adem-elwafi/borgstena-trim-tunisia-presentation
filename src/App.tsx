@@ -1,6 +1,7 @@
 import { type ComponentType, useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './App.css';
+import FixedBackground from './components/FixedBackground';
 import IntroSection from './sections/IntroSection';
 import CompanySection from './sections/CompanySection';
 import ContextSection from './sections/ContextSection';
@@ -139,29 +140,35 @@ function App() {
   // We no longer set inline `transform` here.
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-gray-50">
-      {/* Main slides container */}
-      <div 
-        ref={containerRef}
-        className="flex flex-row h-full"
-        style={{ width: `${totalSlides * 100}vw` }}
-      >
-        {SLIDE_COMPONENTS.map(({ Component, index }) => (
-          <div 
-            key={index}
-            className="w-screen h-screen shrink-0 overflow-y-auto"
-          >
-            <Component 
-              // only mark a slide active after the container finished moving to it
-              isActive={currentSlideIndex === index}
-              slideIndex={index}
-            />
-          </div>
-        ))}
+    <div className="relative h-screen w-screen overflow-hidden">
+      {/* Fixed background layer - NEVER moves or animates */}
+      <FixedBackground />
+
+      {/* Slide viewport - animated content layer above the background */}
+      <div className="relative z-10 h-screen w-screen overflow-hidden">
+        {/* Main slides container - animates horizontally */}
+        <div 
+          ref={containerRef}
+          className="flex flex-row h-full"
+          style={{ width: `${totalSlides * 100}vw` }}
+        >
+          {SLIDE_COMPONENTS.map(({ Component, index }) => (
+            <div 
+              key={index}
+              className="w-screen h-screen shrink-0 overflow-y-auto"
+            >
+              <Component 
+                // only mark a slide active after the container finished moving to it
+                isActive={currentSlideIndex === index}
+                slideIndex={index}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Navigation buttons */}
-      <div className="fixed bottom-8 right-8 flex items-center gap-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg border border-gray-200">
+      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg border border-gray-200">
         {/* Previous button */}
         <button
           onClick={goToPrevSlide}

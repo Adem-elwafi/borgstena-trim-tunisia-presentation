@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import GlassPanel from '../components/GlassPanel';
 
 type SlideProps = {
   isActive: boolean;
@@ -39,9 +40,12 @@ export default function CompanySection({ isActive, slideIndex }: SlideProps) {
     <section
       data-active={isActive}
       data-slide={slideIndex}
-      className="min-h-screen flex items-center justify-center bg-slate-950 py-24"
+      className="relative isolate min-h-screen flex items-center justify-center py-24 overflow-hidden"
     >
-      <div ref={contentRef} className="max-w-5xl mx-auto px-8">
+      {/* Glass panel container */}
+      <GlassPanel />
+
+      <div ref={contentRef} className="relative z-10 max-w-5xl mx-auto px-8">
         <h2 data-animate className="text-5xl font-bold text-sky-300 mb-12">
           Présentation de l'entreprise
         </h2>
